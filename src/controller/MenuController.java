@@ -10,7 +10,6 @@ public class MenuController {
     public MenuController() { 
         this.consoleView = new ConsoleView();
         this.contactManager = new ContactManager(); 
-        System.out.println("\n>>> Contactos iniciales en la lista:");
         contactManager.printList(); 
     }
 
@@ -30,19 +29,19 @@ public class MenuController {
 
     private void handleMenuOption(int option) {
         switch (option) {
-            case 1: // Añadir Contacto
+            case 1: 
                 addContact();
                 break;
-            case 2: // Buscar Contacto
+            case 2: 
                 findContact();
                 break;
-            case 3: // Eliminar Contacto
+            case 3:
                 deleteContact();
                 break;
-            case 4: // Mostrar Todos los Contactos
+            case 4:
                 printList();
                 break;
-            case 5: // Salir
+            case 5: 
                 consoleView.showMessage("Saliendo del programa. ¡Hasta luego!");
                 break;
             default:
@@ -55,13 +54,11 @@ public class MenuController {
         String name = consoleView.getInput("Ingrese el nombre del contacto: ");
         String phone = consoleView.getInput("Ingrese el número de teléfono: ");
 
-        Contact newContact = new Contact(name, phone);
+        Contact<String, String> newContact = new Contact<String, String>(name, phone);
 
-        // findContactByName del ContactManager devuelve Contact<String, String> o null
         if (contactManager.findContactByName(name) != null) {
             consoleView.showMessage("Error: El contacto '" + name + "' ya existe.");
         } else {
-            // CORRECCIÓN: Llamada a addContacts (en plural) según tu ContactManager
             contactManager.addContacts(newContact); // <--- AJUSTE AQUÍ
             consoleView.showMessage("Contacto '" + name + "' añadido exitosamente.");
         }
@@ -69,8 +66,7 @@ public class MenuController {
 
     private void findContact() {
         String nameToFind = consoleView.getInput("Ingrese el nombre del contacto a buscar: ");
-        // findContactByName del ContactManager devuelve Contact<String, String>
-        Contact foundContact = contactManager.findContactByName(nameToFind);
+        Contact<String, String> foundContact = contactManager.findContactByName(nameToFind);
         if (foundContact != null) {
             consoleView.showMessage("Contacto encontrado: " + foundContact);
         } else {
@@ -81,12 +77,8 @@ public class MenuController {
     private void deleteContact() {
         String nameToDelete = consoleView.getInput("Ingrese el nombre del contacto a eliminar: ");
         
-        // findContactByName del ContactManager devuelve Contact<String, String>
-        if (contactManager.findContactByName(nameToDelete) != null) { // Verifica existencia
-            // Llamada directa a deleteContactByName, que a su vez llama a deleteNode.
-            // OJO: Si el contacto no existe, findContactByName devolverá null,
-            // y deleteContactByName en tu ContactManager llamará a deleteNode(null),
-            // lo que podría causar un NullPointerException en LinkedList.
+        if (contactManager.findContactByName(nameToDelete) != null) { 
+
             contactManager.deleteContactByName(nameToDelete); 
             consoleView.showMessage("Contacto '" + nameToDelete + "' eliminado exitosamente.");
         } else {
