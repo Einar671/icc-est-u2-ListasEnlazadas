@@ -10,8 +10,16 @@ public class ContactManager{
     public void addContacts(Contact<String,String> contact){
         contacts.appendToTail(contact);
     }
-    public Contact<String,String> findContactByName(String name){
-       Contact contact=contacts.findByValue(name);
+
+    public Contact<String, String> findContactByName(String name) {
+    }
+    
+    public void deleteContactByName(String name){
+
+    }
+
+    public void printList(){
+        contacts.print();
     }
 
 }
