@@ -10,7 +10,7 @@ public class ConsoleView{
     public void displayMenu(){
         System.out.println();
         System.out.println("╔══════════════════════════╗");
-        System.out.println("║      AGENDA DE CONTACTOS ║");
+        System.out.println("║    AGENDA DE CONTACTOS   ║");
         System.out.println("╠══════════════════════════╣");
         System.out.println("║ 1. Agregar contacto      ║");
         System.out.println("║ 2. Buscar contacto       ║");
@@ -27,5 +27,10 @@ public class ConsoleView{
 
     public void showMessage(String message){
         System.out.println(message);
+    }
+    public void closeScanner() {
+        if (scanner != null) {
+            scanner.close();
+        }
     }
 }
