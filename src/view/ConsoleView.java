@@ -15,13 +15,15 @@ public class ConsoleView{
         System.out.println("║ 1. Agregar contacto      ║");
         System.out.println("║ 2. Buscar contacto       ║");
         System.out.println("║ 3. Eliminar contacto     ║");
-        System.out.println("║ 4. Salir                 ║");
+        System.out.println("║ 4. Listar contactos      ║");
+        System.out.println("║ 5. Salir                 ║");
         System.out.println("╚══════════════════════════╝");
         System.out.println();
         System.out.print("Seleccione una opción: ");
     }
 
     public String getInput(String promp){
+        System.out.println(promp);
         return scanner.nextLine();
     }
 
