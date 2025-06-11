@@ -59,7 +59,7 @@ public class MenuController {
         if (contactManager.findContactByName(name) != null) {
             consoleView.showMessage("Error: El contacto '" + name + "' ya existe.");
         } else {
-            contactManager.addContacts(newContact); // <--- AJUSTE AQUÍ
+            contactManager.addContacts(newContact); 
             consoleView.showMessage("Contacto '" + name + "' añadido exitosamente.");
         }
     }
